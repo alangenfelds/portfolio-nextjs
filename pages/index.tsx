@@ -1,5 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+
 import About from "../components/About";
 import ContactMe from "../components/ContactMe";
 import Header from "../components/Header";
@@ -17,7 +20,7 @@ const Home: NextPage = () => {
           name="Artur's portfolio"
           content="Frontend developer portfolio."
         />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
 
@@ -44,6 +47,21 @@ const Home: NextPage = () => {
       <section id="contact" className="snap-start">
         <ContactMe />
       </section>
+
+      <Link href="#hero">
+        <footer className="sticky bottom-5 w-full cursor-pointer">
+          <div className="flex items-center justify-center">
+            <Image
+              src="https://i.imgur.com/e2yvD6A.png"
+              alt="footer image"
+              objectFit="contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 hover:cursor-pointer"
+            />
+          </div>
+        </footer>
+      </Link>
     </div>
   );
 };
