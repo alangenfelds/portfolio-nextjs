@@ -89,8 +89,8 @@ const Home: NextPage<PageProps> = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
   const skills: Skill[] = await fetchSkills();
+  const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const projects: Project[] = await fetchProjects();
   const socials: Social[] = await fetchSocials();
