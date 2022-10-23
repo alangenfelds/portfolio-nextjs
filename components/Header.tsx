@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import { Social } from "../typings";
 
-type Props = {};
+type Props = {
+  socials: Social[];
+};
 
-const Header = (props: Props) => {
+const Header = ({ socials }: Props) => {
   return (
     <header className="sticky top-0 p-5 flex justify-between items-start xl:items-center max-w-7xl mx-auto z-10 overflow-x-hidden">
       <motion.div
@@ -24,7 +27,15 @@ const Header = (props: Props) => {
           duration: 0.7,
         }}
       >
-        <SocialIcon
+        {socials.map((item) => (
+          <SocialIcon
+            key={item._id}
+            url={item.url}
+            fgColor="gray"
+            bgColor="transparent"
+          />
+        ))}
+        {/* <SocialIcon
           url="https://www.linkedin.com/in/arturs-langenfelds/"
           fgColor="gray"
           bgColor="transparent"
@@ -43,7 +54,7 @@ const Header = (props: Props) => {
           url="https://www.facebook.com/artur.langenfeld"
           fgColor="gray"
           bgColor="transparent"
-        />
+        /> */}
       </motion.div>
       <Link href="#contact">
         <motion.div

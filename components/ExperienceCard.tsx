@@ -1,15 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Experience } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  experience: Experience;
+};
 
-const ExperienceCard = (props: Props) => {
+const ExperienceCard = ({ experience }: Props) => {
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-50 transition-opacity duration-200 cursor-pointer overflow-hidden z-10">
+    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-start md:snap-center bg-[#292929] p-5 hover:opacity-100 opacity-50 transition-opacity duration-200 cursor-pointer overflow-hidden z-10">
       <motion.img
         alt="brand image"
-        src="/images/sm-icons-facebook-logo.webp"
+        src={urlFor(experience?.companyImage).url()}
         className="w-32 h-32 xl:w-[200px] xl:h-[200px] object-cover object-center rounded-full "
         initial={{
           opacity: 0,
@@ -26,53 +30,34 @@ const ExperienceCard = (props: Props) => {
       />
 
       <div className="px-0 md:px-10">
-        <h4 className="text-4xl font-light">QA Automation Engineer</h4>
-        <p className="font-bold text-2xl mt-1">ACCENTURE</p>
+        <h4 className="text-4xl font-light">{experience?.jobTitle}</h4>
+        <p className="font-bold text-2xl mt-1">{experience?.company}</p>
         <div className="flex space-x-2 my-2">
-          <Image
-            src="/images/css.png"
-            width={32}
-            height={32}
-            objectFit="contain"
-            alt="tech logo"
-            className="h-10 w-10 rounded-full"
-          />
-          <Image
-            src="/images/javascript.png"
-            width={32}
-            height={32}
-            objectFit="contain"
-            alt="tech logo"
-            className="h-10 w-10 rounded-full"
-          />
-          <Image
-            src="/images/html.png"
-            width={32}
-            height={32}
-            objectFit="contain"
-            alt="tech logo"
-            className="h-10 w-10 rounded-full"
-          />
-          <Image
-            src="/images/react.png"
-            width={32}
-            height={32}
-            objectFit="contain"
-            alt="tech logo"
-            className="h-10 w-10 rounded-full"
-          />
+          {experience?.technologies.map((technology) => (
+            <Image
+              key={technology._id}
+              src={urlFor(technology?.image).url()}
+              width={32}
+              height={32}
+              objectFit="contain"
+              alt="tech logo"
+              className="h-10 w-10 rounded-full"
+            />
+          ))}
         </div>
 
         <p className="uppercase py-5 text-gray-300">
-          Started work ... - Ended...
+          {`${new Date(experience.dateStarted).toDateString()} - ${
+            experience?.isCurrentWorkPlace
+              ? "Present"
+              : new Date(experience.dateEnded).toDateString()
+          }`}
         </p>
 
-        <ul className="list-disc space-y-4 ml-5 text-lg">
-          <li>Summary pointsSummary pointsSummary pointsSummary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
-          <li>Summary points</li>
+        <ul className="list-disc space-y-4 ml-5 text-lg h-72 md:h-64  pr-5 overflow-y-auto scrollbar-thin scrollbar-thumb-[#f7ab0a]/60 scrollbar-track-black">
+          {experience?.points.map((point, idx) => (
+            <li key={idx}>{point}</li>
+          ))}
         </ul>
       </div>
     </article>

@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PageInfo } from "../typings";
+import { urlFor } from "../sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const About = (props: Props) => {
+const About = ({ pageInfo }: Props) => {
   return (
     <motion.div
       className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center select-none"
@@ -23,7 +27,7 @@ const About = (props: Props) => {
 
       <motion.img
         alt="author image"
-        src="http://forumcinemaslv.blob.core.windows.net/1012/Event_6922/gallery/dictator-picture1.jpg"
+        src={urlFor(pageInfo?.profilePic).url()}
         className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[450px] xl:h-[550px]"
         initial={{
           x: -200,
@@ -45,14 +49,7 @@ const About = (props: Props) => {
           <span className="underline decoration-[#f7ab08]/60">little</span>{" "}
           background
         </h4>
-        <p className="text-base">
-          I am Artur. Here is a liitle bit about me... I&apos;ve been coding for
-          5 years now. As a Frontend developer I&apos;ve worked both with a
-          mid-sized product company and large consulting corporations where I
-          successfully participated in developement of different types of web
-          applications Fintech, Goverment, Information systems as well as my
-          private projects.
-        </p>
+        <p className="text-base">{pageInfo?.backgroundInformation}</p>
       </div>
     </motion.div>
   );

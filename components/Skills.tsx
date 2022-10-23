@@ -1,10 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Skill from "./Skill";
+import SkillItem from "./SkillItem";
+import { Technology } from "../typings";
 
-type Props = {};
+type Props = {
+  skills: Technology[];
+};
 
-const Skills = (props: Props) => {
+const Skills = ({ skills }: Props) => {
   return (
     <motion.div
       className="h-screen relative flex flex-col xl:flex-row justify-center items-center xl:space-y-0 text-center md:text-left max-w-[2000px] xl:px-10 min-h-screen mx-auto"
@@ -15,7 +18,7 @@ const Skills = (props: Props) => {
         opacity: 1,
       }}
       transition={{
-        duration: 1.5,
+        duration: 1.2,
       }}
     >
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
@@ -27,17 +30,12 @@ const Skills = (props: Props) => {
       </h3>
 
       <div className="grid grid-cols-4 gap-5">
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
-        <Skill imgSrc="./images/sanity.webp" />
+        {skills?.slice(0, skills.length / 2).map((skill) => (
+          <SkillItem key={skill._id} skill={skill} directionLeft />
+        ))}
+        {skills?.slice(skills.length / 2, skills.length).map((skill) => (
+          <SkillItem key={skill._id} skill={skill} />
+        ))}
       </div>
     </motion.div>
   );
