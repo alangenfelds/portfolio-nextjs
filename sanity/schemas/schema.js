@@ -21,3 +21,5 @@ export default createSchema({
     social
   ]),
 })
+
+// https://portfolio-artur.sanity.studio/   
