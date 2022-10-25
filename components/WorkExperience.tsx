@@ -10,7 +10,7 @@ type Props = {
 const WorkExperience = ({ experiences }: Props) => {
   return (
     <motion.div
-      className="h-screen relative flex flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center overflow-hidden "
+      className="h-screen relative flex flex-col text-left md:flex-row max-w-full px-5 md:px-10 justify-evenly mx-auto items-center overflow-hidden isolate"
       initial={{
         opacity: 0,
       }}
@@ -25,7 +25,7 @@ const WorkExperience = ({ experiences }: Props) => {
         Experience
       </h3>
 
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory mt-20 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab08]/80">
+      <div className="w-full flex space-x-5 md:space-x-10 overflow-x-scroll  snap-x snap-mandatory scroll-smooth mt-32 p-10 scrollbar  scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab08]/80">
         {experiences.map((experience) => (
           <ExperienceCard key={experience._id} experience={experience} />
         ))}

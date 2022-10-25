@@ -9,18 +9,7 @@ type Props = {
 
 const Skills = ({ skills }: Props) => {
   return (
-    <motion.div
-      className="h-screen relative flex flex-col xl:flex-row justify-center items-center xl:space-y-0 text-center md:text-left max-w-[2000px] xl:px-10 min-h-screen mx-auto"
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1.2,
-      }}
-    >
+    <div className="h-screen relative flex flex-col xl:flex-row justify-center items-center xl:space-y-0 text-center md:text-left max-w-[2000px] xl:px-10 min-h-screen mx-auto">
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
         Skills
       </h3>
@@ -29,15 +18,19 @@ const Skills = ({ skills }: Props) => {
         Hover over the skill for current proficiency
       </h3>
 
-      <div className="grid grid-cols-4 gap-5">
-        {skills?.slice(0, skills.length / 2).map((skill) => (
-          <SkillItem key={skill._id} skill={skill} directionLeft />
+      <div className="pt-44 md:pt-0 xl:pt-10 grid grid-cols-4 md:grid-cols-5 gap-5">
+        {skills?.slice(0, skills.length / 2).map((skill, idx) => (
+          <SkillItem key={skill._id} skill={skill} idx={idx} />
         ))}
-        {skills?.slice(skills.length / 2, skills.length).map((skill) => (
-          <SkillItem key={skill._id} skill={skill} />
+        {skills?.slice(skills.length / 2, skills.length).map((skill, idx) => (
+          <SkillItem
+            key={skill._id}
+            skill={skill}
+            idx={skills.length / 2 + idx}
+          />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

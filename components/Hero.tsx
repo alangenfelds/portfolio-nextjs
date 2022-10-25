@@ -37,28 +37,28 @@ const Hero = ({ pageInfo }: Props) => {
       />
 
       <div className="isolate">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[13px]">
+        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[10px]  md:tracking-[13px]">
           {pageInfo?.role}
         </h2>
-        <h1 className="text-3xl md:text-5xl lg:text-6xl px-10">
+        <h1 className="text-2xl md:text-5xl lg:text-6xl px-10">
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#f7ab0a" />
         </h1>
+      </div>
 
-        <div className="mt-6 space-x-3">
-          <Link href="#about">
-            <button className="heroButton">About</button>
-          </Link>
-          <Link href="#experience">
-            <button className="heroButton">Experience</button>
-          </Link>
-          <Link href="#skills">
-            <button className="heroButton">Skills</button>
-          </Link>
-          <Link href="#projects">
-            <button className="heroButton">Projects</button>
-          </Link>
-        </div>
+      <div className="pt-24 md:pt-0 mt-6 flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3 isolate">
+        <Link href="#about">
+          <button className="heroButton">About</button>
+        </Link>
+        <Link href="#experience">
+          <button className="heroButton">Experience</button>
+        </Link>
+        <Link href="#skills">
+          <button className="heroButton">Skills</button>
+        </Link>
+        <Link href="#projects">
+          <button className="heroButton">Projects</button>
+        </Link>
       </div>
     </div>
   );

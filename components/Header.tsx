@@ -35,26 +35,6 @@ const Header = ({ socials }: Props) => {
             bgColor="transparent"
           />
         ))}
-        {/* <SocialIcon
-          url="https://www.linkedin.com/in/arturs-langenfelds/"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://github.com/alangenfelds"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.youtube.com/channel/UCMvFcA4RF1w1FUi_nryzYtg"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.facebook.com/artur.langenfeld"
-          fgColor="gray"
-          bgColor="transparent"
-        /> */}
       </motion.div>
       <Link href="#contact">
         <motion.div
