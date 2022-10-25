@@ -59,7 +59,7 @@ const Header = ({ socials }: Props) => {
             fgColor="gray"
             bgColor="transparent"
           />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 pr-5">
             Get in touch
           </p>
         </motion.div>
