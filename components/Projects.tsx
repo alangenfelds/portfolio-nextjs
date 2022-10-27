@@ -32,12 +32,12 @@ const Projects = ({ projects }: Props) => {
             key={project._id}
             className="w-full h-screen flex-shrink-0 flex flex-col justify-center items-center space-y-5 p-20 md:p-44 snap-center"
           >
-            <div className="relative">
+            <div className="relative hover:cursor-pointer hover:scale-[200%] transition-transform duration-150 z-10">
               <motion.img
                 src={urlFor(project?.image)?.url()}
                 alt="project image"
-                width={100}
-                height={70}
+                width={150}
+                height={80}
                 initial={{
                   y: -100,
                 }}
@@ -51,7 +51,7 @@ const Projects = ({ projects }: Props) => {
               />
             </div>
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
+              <h4 className="text-2xl md:text-4xl font-semibold text-center">
                 <>
                   <span className="underline decoration-[#f7ab0a]/50">
                     Case Study {idx + 1} of {projects.length}:
@@ -75,7 +75,17 @@ const Projects = ({ projects }: Props) => {
               </div>
 
               <p className="text-lg text-center md:text-left">
-                {project?.summary}
+                {project?.summary}{" "}
+                {project?.linkToBuild && (
+                  <a
+                    href={project?.linkToBuild ?? ""}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mx-auto text-center underline text-base font-semibold decoration-[#f7ab0a]/40 animate-pulse text-[#f7ab0a]"
+                  >
+                    (Open link)
+                  </a>
+                )}
               </p>
             </div>
           </div>
