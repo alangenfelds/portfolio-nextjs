@@ -74,8 +74,8 @@ const Home: NextPage<PageProps> = ({
       </section>
 
       <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="hidden md:flex items-center justify-end transition-all duration-150 md:mr-10">
+        <footer className="sticky bottom-5 w-full cursor-pointer z-10">
+          <div className="hidden md:flex items-center justify-end transition-all duration-150 md:mr-10  ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
