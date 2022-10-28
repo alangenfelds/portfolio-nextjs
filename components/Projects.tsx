@@ -11,7 +11,7 @@ type Props = {
 const Projects = ({ projects }: Props) => {
   return (
     <motion.div
-      className="relative h-screen flex flex-col text-left max-w-full justify-evenly mx-auto items-center overflow-hidden"
+      className="relative h-screen flex flex-col text-left max-w-full justify-evenly mx-auto items-center overflow-hidden isolate"
       initial={{
         opacity: 0,
       }}

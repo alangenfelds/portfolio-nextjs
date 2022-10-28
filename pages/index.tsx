@@ -1,3 +1,4 @@
+import { RefObject, useRef } from "react";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -15,6 +16,8 @@ import { fetchSkills } from "../utils/fetchSkills";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSocials } from "../utils/fetchSocials";
+import Footer from "../components/Footer";
+import { useIntersection } from "../hooks/useIntersection";
 // import { useRef } from "react";
 
 type PageProps = {
@@ -32,7 +35,8 @@ const Home: NextPage<PageProps> = ({
   projects,
   socials,
 }) => {
-  // const footerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const inViewport = useIntersection(heroRef, "-200px");
 
   return (
     <div className="relative bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll isolate scroll-smooth md:scrollbar  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab08]/80">
@@ -49,7 +53,7 @@ const Home: NextPage<PageProps> = ({
 
       <Header socials={socials} />
 
-      <section id="hero" className="snap-center">
+      <section id="hero" className="snap-center" ref={heroRef}>
         <Hero pageInfo={pageInfo} />
       </section>
 
@@ -73,26 +77,7 @@ const Home: NextPage<PageProps> = ({
         <ContactMe />
       </section>
 
-      <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="hidden md:flex items-center justify-end transition-all duration-150 md:mr-10  ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#f7ab08"
-              className="mr-5 md:mr-0 h-6 w-6 rounded-full filter grayscale hover:grayscale-0 hover:cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"
-              />
-            </svg>
-          </div>
-        </footer>
-      </Link>
+      {inViewport ? <></> : <Footer />}
     </div>
   );
 };
