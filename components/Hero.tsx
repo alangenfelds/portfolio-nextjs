@@ -31,11 +31,10 @@ const Hero = ({ pageInfo }: Props) => {
         src={urlFor(pageInfo?.image).url()}
         alt="hero"
         objectFit="cover"
-        width={128}
-        height={128}
+        width={150}
+        height={150}
         className="relative rounded-full w-32 mx-auto object-cover"
       />
-
       <div className="isolate">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[10px]  md:tracking-[13px]">
           {pageInfo?.role}

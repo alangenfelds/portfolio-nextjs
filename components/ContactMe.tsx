@@ -1,5 +1,6 @@
 import React from "react";
-import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+
+// import { PhoneIcon, MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Props = {};
@@ -20,7 +21,7 @@ const ContactMe = (props: Props) => {
   };
 
   return (
-    <div className="h-screen relative flex flex-col   md:flex-row max-w-7xl px-10 mx-auto items-center overflow-clip">
+    <div className="h-screen relative flex flex-col   md:flex-row max-w-7xl px-10 mx-auto items-center justify-center overflow-clip">
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
         Contact
       </h3>
@@ -50,7 +51,6 @@ const ContactMe = (props: Props) => {
           </div> */}
         </div>
       </div>
-
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-2 w-full md:w-fit mx-auto"
