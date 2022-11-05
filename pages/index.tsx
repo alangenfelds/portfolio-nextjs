@@ -1,7 +1,7 @@
-import { RefObject, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import { useTheme } from "next-themes";
 
 import About from "../components/About";
 import ContactMe from "../components/ContactMe";
@@ -18,7 +18,6 @@ import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSocials } from "../utils/fetchSocials";
 import Footer from "../components/Footer";
 import { useIntersection } from "../hooks/useIntersection";
-// import { useRef } from "react";
 
 type PageProps = {
   pageInfo: PageInfo;
@@ -35,11 +34,25 @@ const Home: NextPage<PageProps> = ({
   projects,
   socials,
 }) => {
+  // const [mounted, setMounted] = useState(false);
+  const { setTheme } = useTheme();
+
   const heroRef = useRef<HTMLDivElement | null>(null);
   const inViewport = useIntersection(heroRef, "-200px");
 
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    // setMounted(true);
+    setTheme("dark");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // if (!mounted) {
+  //   return null;
+  // }
+
   return (
-    <div className="relative bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll isolate scroll-smooth md:scrollbar  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab08]/80">
+    <div className="relative dark:bg-[rgb(36,36,36)]bg-[#f7f7f7] dark:text-white text-[#393e46]      } h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll isolate scroll-smooth md:scrollbar  scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab08]/80">
       <Head>
         <title>Portfolio</title>
         <meta
@@ -49,7 +62,7 @@ const Home: NextPage<PageProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="sticky top-0 w-full h-[90px]  z-10 bg-gradient-to-b from-[rgb(36,36,36)] to-transparent" />
+      <div className="sticky top-0 w-full h-[90px] z-10 bg-gradient-to-b dark:from-[rgb(36,36,36)] to-transparent" />
 
       <Header socials={socials} />
 
